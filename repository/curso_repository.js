@@ -66,9 +66,9 @@ async function updateCurso(cliente, descricao, ementa, codigo){
 }
 
 // ------------- DEL Curso -------------
-async function delCurso(){
+async function delCurso(cliente, codigo){
     try {
-        await cliente.query("DELETE FROM curso WHERE codigo  = 3")
+        await cliente.query(`DELETE FROM curso WHERE codigo=${codigo}`)
         return {
             'statusCode': 200,
             'msgRetorno': 'Curso removido com sucesso!',
