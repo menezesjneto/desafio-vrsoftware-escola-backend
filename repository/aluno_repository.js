@@ -15,7 +15,22 @@ async function getAlunos(cliente){
             'msgRetorno': 'Operação não realizada, estamos com um problema no servidor :('
         }
     }
-    return 1
+}
+
+async function getAlunosById(cliente, codigoAluno){
+    try {
+        const resultado = await cliente.query(`SELECT * FROM aluno WHERE codigo=${codigoAluno}`)
+        return {
+            'statusCode': 200,
+            'msgRetorno': 'Alunos retornados com sucesso!',
+            'alunos': resultado.rows 
+        }
+    } catch (error) {
+        return {
+            'statusCode': 404,
+            'msgRetorno': 'Operação não realizada, estamos com um problema no servidor :('
+        }
+    }
 }
 
 // ------------- INSERT Aluno -------------
@@ -70,6 +85,7 @@ async function delAluno(){
   
 module.exports = { 
     getAlunos,
+    getAlunosById,
     insAluno,
     updateAluno,
     delAluno,

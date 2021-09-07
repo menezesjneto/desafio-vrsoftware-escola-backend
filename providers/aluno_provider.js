@@ -8,6 +8,13 @@ function runApiAluno(server, cliente){
         });
     })
 
+    server.get('/api/alunosById', (req, res) => {
+        var codigoAluno = req.query['codigoAluno']
+        alunoRepository.getAlunosById(cliente, codigoAluno).then((result) => {
+            return res.json(result)
+        });
+    })
+
     // ------------- REST API POST -------------
     server.post('/api/alunos', (req, res) => {
         var nome = req.query['nome']

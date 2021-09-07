@@ -8,6 +8,13 @@ function runApiCurso(server, cliente){
         });
     })
 
+    server.get('/api/cursosById', (req, res) => {
+        var codigoCurso= req.query['codigoCurso']
+        cursoRepository.getCursosById(cliente, codigoCurso).then((result) => {
+            return res.json(result)
+        });
+    })
+
     // ------------- REST API POST -------------
     server.post('/api/cursos', (req, res) => {
         var ementa = req.query['ementa']

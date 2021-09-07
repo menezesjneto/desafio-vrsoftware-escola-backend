@@ -17,6 +17,22 @@ async function getCursos(cliente){
     }
 }
 
+async function getCursosById(cliente, codigoCurso){
+    try {
+        const resultado = await cliente.query(`SELECT * FROM curso WHERE codigo=${codigoCurso}`)
+        return {
+            'statusCode': 200,
+            'msgRetorno': 'Cursos retornados com sucesso!',
+            'cursos': resultado.rows 
+        }
+    } catch (error) {
+        return {
+            'statusCode': 404,
+            'msgRetorno': 'Operação não realizada, estamos com um problema no servidor :('
+        }
+    }
+}
+
 // ------------- INSERT Curso -------------
 async function insCurso(cliente, descricao, ementa){
     try {
@@ -67,6 +83,7 @@ async function delCurso(){
 
 module.exports = { 
     getCursos,
+    getCursosById,
     insCurso,
     updateCurso,
     delCurso,
