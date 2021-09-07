@@ -3,10 +3,9 @@ const alunoRepository = require("../repository/aluno_repository");
 function runApiAluno(server, cliente){
     // ------------- REST API GET -------------
     server.get('/api/alunos', (req, res) => {
-        // alunoRepository.getAlunos(cliente).then((result) => {
-        //     return res.json(result)
-        // });
-        return res.json('sucesso!!!!!!!!!!!')
+        alunoRepository.getAlunos(cliente).then((result) => {
+            return res.json(result)
+        });
     })
 
     // ------------- REST API POST -------------
