@@ -10,7 +10,7 @@ async function getCursosAlunos(cliente, codigo_curso){
         return {
             'statusCode': 200,
             'msgRetorno': 'Cursos com alunos retornados com sucesso!',
-            'cursos': resultado.rows 
+            'cursosAlunos': resultado.rows 
         }
     } catch (error) {
         return {

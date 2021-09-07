@@ -7,7 +7,7 @@ async function getAlunos(cliente){
         return {
             'statusCode': 200,
             'msgRetorno': 'Alunos retornados com sucesso!',
-            'cursos': resultado.rows 
+            'alunos': resultado.rows 
         }
     } catch (error) {
         return {
