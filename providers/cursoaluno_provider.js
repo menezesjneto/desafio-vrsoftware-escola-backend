@@ -3,9 +3,7 @@ const cursoAlunoRepository = require("../repository/cursoaluno_repository");
 function runApiCursoAluno(server, cliente){
     // ------------- REST API GET -------------
     server.get('/api/cursosalunos', (req, res) => {
-        console.log(req.query['codigocurso'])
-        var codigo_curso = req.query['codigocurso']
-        cursoAlunoRepository.getCursosAlunos(cliente, codigo_curso).then((result) => {
+        cursoAlunoRepository.getCursosAlunos(cliente).then((result) => {
             return res.json(result)
         });
     })
@@ -15,6 +13,13 @@ function runApiCursoAluno(server, cliente){
         var codigo_aluno = parseInt(req.query['codigoAluno'])
         var codigo_curso = parseInt(req.query['codigoCurso'])
         cursoAlunoRepository.insCursoAluno(cliente, codigo_aluno,  codigo_curso).then((result) => {
+            return res.json(result)
+        });
+    })
+
+    server.post('/api/cursoalunobyidcurso', (req, res) => {
+        var codigo_curso = Number(req.query['codigoCurso'].replace('"', "'").replace('"', "'"))
+        cursoAlunoRepository.getCursosAlunosByidCurso(cliente, codigo_curso).then((result) => {
             return res.json(result)
         });
     })
