@@ -12,7 +12,7 @@ const cursoAlunoProvider = require("./providers/cursoaluno_provider");
 
 const express = require('express')
 const server = express()
-server.listen(3000, () =>{
+server.listen(process.env.PORT || 3000, () =>{
     try {
         cliente.connect()
         console.log("conexao com o banco e servidor funcionando")
