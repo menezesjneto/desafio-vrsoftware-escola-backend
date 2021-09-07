@@ -19,9 +19,15 @@ function runApiCurso(server, cliente){
     server.post('/api/cursos', (req, res) => {
         var ementa = req.query['ementa'].replace('"', "'").replace('"', "'")
         var descricao = req.query['descricao'].replace('"', "'").replace('"', "'")
-        console.log(ementa)
-        console.log(descricao)
         cursoRepository.insCurso(cliente, descricao,  ementa).then((result) => {
+            return res.json(result)
+        });
+    })
+    server.post('/api/cursosUpdate', (req, res) => {
+        var ementa = req.query['ementa'].replace('"', "'").replace('"', "'")
+        var descricao = req.query['descricao'].replace('"', "'").replace('"', "'")
+        var codigo = req.query['codigo']
+        cursoRepository.updateCurso(cliente, descricao,  ementa, codigo).then((result) => {
             return res.json(result)
         });
     })

@@ -50,9 +50,9 @@ async function insCurso(cliente, descricao, ementa){
 }
 
 // ------------- INSERT Curso -------------
-async function updateCurso(){
+async function updateCurso(cliente, descricao, ementa, codigo){
     try {
-        await cliente.query("UPDATE curso SET ementa = 'Ementa Atualizada' WHERE codigo = 2")
+        await cliente.query(`UPDATE curso SET descricao=${descricao} ementa=${ementa} WHERE codigo=${codigo}`)
         return {
             'statusCode': 200,
             'msgRetorno': 'Curso atualizado com sucesso!',
