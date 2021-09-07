@@ -6,7 +6,8 @@
 
 
 // ------------- Init SERVER -------------
-process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
+
 const cursoProvider = require("./providers/curso_provider");
 const alunoProvider = require("./providers/aluno_provider");
 const cursoAlunoProvider = require("./providers/cursoaluno_provider");
@@ -37,7 +38,8 @@ const cliente = new Client({
     host: 'ec2-44-196-8-220.compute-1.amazonaws.com',
     port: 5432,
     database: 'de6lt1r1jqdtkq',
-    ssl: true,
+    ssl: { rejectUnauthorized: false }
+    
 })
 
 // ------------- Run APIS -------------
