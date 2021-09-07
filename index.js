@@ -36,10 +36,10 @@ const cliente = new Client({
     host: 'ec2-44-196-8-220.compute-1.amazonaws.com',
     port: 5432,
     database: 'de6lt1r1jqdtkq',
-    ssl: false,
+    ssl: true,
     dialect: 'postgres',
     dialectOptions: {
-        "ssl": {"require":false }
+        "ssl": true
     }
 })
 
