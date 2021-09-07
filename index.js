@@ -6,13 +6,14 @@
 
 
 // ------------- Init SERVER -------------
+process.env.NODE_TLS_REJECT_UNAUTHORIZED='0'
 const cursoProvider = require("./providers/curso_provider");
 const alunoProvider = require("./providers/aluno_provider");
 const cursoAlunoProvider = require("./providers/cursoaluno_provider");
 
 const express = require('express')
 const server = express()
-server.listen(process.env.PORT || 3000, () =>{
+server.listen(3000, () =>{
     try {
         cliente.connect()
         console.log("conexao com o banco e servidor funcionando")
@@ -37,10 +38,6 @@ const cliente = new Client({
     port: 5432,
     database: 'de6lt1r1jqdtkq',
     ssl: true,
-    dialect: 'postgres',
-    dialectOptions: {
-        "ssl": true
-    }
 })
 
 // ------------- Run APIS -------------

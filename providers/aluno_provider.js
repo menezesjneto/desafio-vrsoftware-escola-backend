@@ -6,7 +6,7 @@ function runApiAluno(server, cliente){
         // alunoRepository.getAlunos(cliente).then((result) => {
         //     return res.json(result)
         // });
-        return 'sucesso!!!!!!!!!!!'
+        return res.json('sucesso!!!!!!!!!!!')
     })
 
     // ------------- REST API POST -------------
