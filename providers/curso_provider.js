@@ -26,7 +26,10 @@ function runApiCurso(server, cliente){
     server.post('/api/cursosUpdate', (req, res) => {
         var ementa = req.query['ementa'].replace('"', "'").replace('"', "'")
         var descricao = req.query['descricao'].replace('"', "'").replace('"', "'")
-        var codigo = req.query['codigo']
+        var codigo = Number(req.query['codigo'].replace('"', "'").replace('"', "'"))
+        console.log(codigo);
+        console.log(descricao);
+        console.log(ementa)
         cursoRepository.updateCurso(cliente, descricao,  ementa, codigo).then((result) => {
             return res.json(result)
         });
