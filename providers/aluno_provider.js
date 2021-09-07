@@ -17,7 +17,7 @@ function runApiAluno(server, cliente){
 
     // ------------- REST API POST -------------
     server.post('/api/alunos', (req, res) => {
-        var nome = req.query['nome']
+        var nome = req.query['nome'].replace('"', "'").replace('"', "'")
         alunoRepository.insAluno(cliente, nome).then((result) => {
             return res.json(result)
         });
