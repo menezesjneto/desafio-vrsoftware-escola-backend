@@ -84,12 +84,12 @@ async function updateCursoAluno(cliente){
 }
 
 // ------------- DEL CursoAluno -------------
-async function delCursoAluno(cliente){
+async function delCursoAluno(cliente, codigo){
     try {
-        await cliente.query("DELETE FROM curso_aluno WHERE codigo_curso = 54304")
+        await cliente.query(`DELETE FROM curso_aluno WHERE codigo=${codigo}`)
         return {
             'statusCode': 200,
-            'msgRetorno': 'Aluno associado ao curso removido com sucesso!',
+            'msgRetorno': 'Matrícula removido com sucesso!',
         }
     } catch (error) {
         return {

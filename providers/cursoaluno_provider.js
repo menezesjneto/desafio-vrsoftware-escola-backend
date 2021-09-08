@@ -30,6 +30,14 @@ function runApiCursoAluno(server, cliente){
             return res.json(result)
         });
     })
+
+    server.post('/api/cursoAlunoDeleteById', (req, res) => {
+        var codigo = Number(req.query['codigo'].replace('"', "'").replace('"', "'"))
+        cursoAlunoRepository.delCursoAluno(cliente, codigo).then((result) => {
+            return res.json(result)
+        });
+    })
+
 }
 
 module.exports = { 
