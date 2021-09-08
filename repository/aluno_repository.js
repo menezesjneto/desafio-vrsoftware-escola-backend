@@ -50,10 +50,9 @@ async function insAluno(cliente, nome){
 }
 
 // ------------- INSERT Aluno -------------
-async function updateAluno(){
+async function updateAluno(cliente, nome, codigo){
     try {
-        await cliente.query("UPDATE aluno SET nome = 'Nome Atualizada' WHERE codigo = 1")
-        const resultado = await cliente.query('select * from aluno')
+        await cliente.query(`UPDATE aluno SET nome=${nome} WHERE codigo=${codigo}`)
         return {
             'statusCode': 200,
             'msgRetorno': 'Aluno atualizado com sucesso!',
@@ -67,9 +66,9 @@ async function updateAluno(){
 }
 
 // ------------- DEL Aluno -------------
-async function delAluno(){
+async function delAluno(cliente, codigo){
     try {
-        await cliente.query("DELETE FROM aluno WHERE codigo  = 1")
+        await cliente.query(`DELETE FROM aluno WHERE codigo=${codigo}`)
         return {
             'statusCode': 200,
             'msgRetorno': 'Aluno removido com sucesso!',

@@ -22,6 +22,21 @@ function runApiAluno(server, cliente){
             return res.json(result)
         });
     })
+
+    server.post('/api/alunosUpdate', (req, res) => {
+        var nome = req.query['nome'].replace('"', "'").replace('"', "'")
+        var codigo = Number(req.query['codigo'].replace('"', "'").replace('"', "'"))
+        alunoRepository.updateAluno(cliente, nome, codigo).then((result) => {
+            return res.json(result)
+        });
+    })
+
+    server.post('/api/alunisDeleteById', (req, res) => {
+        var codigo = Number(req.query['codigo'].replace('"', "'").replace('"', "'"))
+        alunoRepository.delAluno(cliente, codigo).then((result) => {
+            return res.json(result)
+        });
+    })
 }
 
 module.exports = { 

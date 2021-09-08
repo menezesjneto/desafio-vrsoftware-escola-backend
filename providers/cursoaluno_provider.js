@@ -23,6 +23,13 @@ function runApiCursoAluno(server, cliente){
             return res.json(result)
         });
     })
+
+    server.post('/api/cursoalunobyidaluno', (req, res) => {
+        var codigo_aluno = Number(req.query['codigoAluno'].replace('"', "'").replace('"', "'"))
+        cursoAlunoRepository.getCursosAlunosByidAluno(cliente, codigo_aluno).then((result) => {
+            return res.json(result)
+        });
+    })
 }
 
 module.exports = { 

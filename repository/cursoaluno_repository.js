@@ -34,6 +34,22 @@ async function getCursosAlunosByidCurso(cliente, codigo_curso){
     }
 }
 
+async function getCursosAlunosByidAluno(cliente, codigo_aluno){
+    try {
+        var resultado = await cliente.query(`SELECT * FROM curso_aluno WHERE codigo_aluno = ${codigo_aluno}`)
+        return {
+            'statusCode': 200,
+            'msgRetorno': 'Cursos com alunos retornados com sucesso!',
+            'cursosAlunos': resultado.rows 
+        }
+    } catch (error) {
+        return {
+            'statusCode': 404,
+            'msgRetorno': 'Operação não realizada, estamos com um problema no servidor :('
+        }
+    }
+}
+
 // ------------- INSERT CursoAluno -------------
 async function insCursoAluno(cliente, codigo_aluno, codigo_curso){
     try {
@@ -70,7 +86,7 @@ async function updateCursoAluno(cliente){
 // ------------- DEL CursoAluno -------------
 async function delCursoAluno(cliente){
     try {
-        await cliente.query("DELETE FROM curso_aluno WHERE codigo  = 39318")
+        await cliente.query("DELETE FROM curso_aluno WHERE codigo_curso = 54304")
         return {
             'statusCode': 200,
             'msgRetorno': 'Aluno associado ao curso removido com sucesso!',
@@ -88,5 +104,6 @@ module.exports = {
     insCursoAluno,
     updateCursoAluno,
     delCursoAluno,
-    getCursosAlunosByidCurso
+    getCursosAlunosByidCurso,
+    getCursosAlunosByidAluno
 };
